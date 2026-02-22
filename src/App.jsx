@@ -58,9 +58,9 @@ function App() {
     });
 
     gsap.to(".character", {
-      scale: 1.4,
+      scale: 0.6,
       x: "-50%",
-      bottom: "-25%",
+      bottom: "-40%",
       rotate: 0,
       duration: 2,
       delay: "-.8",
@@ -68,7 +68,9 @@ function App() {
     });
 
     gsap.to(".text", {
-      scale: 1,
+      scale: 0.6,
+      top: 0,
+      left: "50%",
       rotate: 0,
       duration: 2,
       delay: "-.8",
@@ -178,35 +180,35 @@ function App() {
             <div className="cntnr flex text-white w-full h-[80%] ">
               <div className="limg relative w-1/2 h-full">
                 <img
-                  className="absolute scale-[1.3] top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
+                  className="absolute scale-[1] top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
                   src="./imag.png"
                   alt=""
                 />
               </div>
               <div className="rg w-[30%] py-30">
-                <h1 className="text-8xl">Still Running,</h1>
-                <h1 className="text-8xl">Not Hunting</h1>
-                <p className="mt-10 text-xl font-[Helvetica_Now_Display]">
+                <h1 className="text-5xl">Still Running,</h1>
+                <h1 className="text-5xl">Not Hunting</h1>
+                <p className="mt-10 text-sm font-[Helvetica_Now_Display]">
                   Lorem ipsum, dolor sit amet consectetur adipisicing elit.
                   Distinctio possimus, asperiores nam, omnis inventore nesciunt
                   a architecto eveniet saepe, ducimus necessitatibus at
                   voluptate.
                 </p>
-                <p className="mt-3 text-xl font-[Helvetica_Now_Display]">
+                <p className="mt-3 text-sm font-[Helvetica_Now_Display]">
                   Lorem ipsum dolor sit amet consectetur adipisicing elit. At
                   eius illum fugit eligendi nesciunt quia similique velit
                   excepturi soluta tenetur illo repellat consectetur laborum
                   eveniet eaque, dicta, hic quisquam? Ex cupiditate ipsa nostrum
                   autem sapiente.
                 </p>
-                <p className="mt-10 text-xl font-[Helvetica_Now_Display]">
+                <p className="mt-10 text-sm font-[Helvetica_Now_Display]">
                   Lorem ipsum dolor sit amet consectetur adipisicing elit. At
                   eius illum fugit eligendi nesciunt quia similique velit
                   excepturi soluta tenetur illo repellat consectetur laborum
                   eveniet eaque, dicta, hic quisquam? Ex cupiditate ipsa nostrum
                   autem sapiente.
                 </p>
-                <button className="bg-yellow-500 px-10 py-10 text-black mt-10 text-4xl">
+                <button className="bg-yellow-500 px-10 py-10 text-black mt-10 text-2xl">
                   Download Now
                 </button>
               </div>
