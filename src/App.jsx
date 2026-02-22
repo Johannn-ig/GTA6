@@ -85,8 +85,9 @@ function App() {
     const main = document.querySelector(".main");
 
     // Only add mousemove parallax on non-touch devices
+    let handleMouseMove;
     if (!("ontouchstart" in window)) {
-      main?.addEventListener("mousemove", function (e) {
+      handleMouseMove = (e) => {
         const xMove = (e.clientX / window.innerWidth - 0.5) * 40;
         gsap.to(".main .text", {
           x: `${xMove * 0.4}%`,
@@ -97,41 +98,50 @@ function App() {
         gsap.to(".bg", {
           x: xMove * 1.7,
         });
-      });
+      };
+      main?.addEventListener("mousemove", handleMouseMove);
     }
+
+    return () => {
+      if (handleMouseMove) {
+        main?.removeEventListener("mousemove", handleMouseMove);
+      }
+    };
   }, [showContent]);
 
   return (
     <>
-      <div className="svg flex items-center justify-center fixed top-0 left-0 z-[100] w-full h-screen overflow-hidden bg-[#000]">
-        <svg viewBox={`0 0 ${vw} ${vh}`} preserveAspectRatio="xMidYMid slice">
-          <defs>
-            <mask id="viMask">
-              <rect width="100%" height="100%" fill="black" />
-              <g className="vi-mask-group">
-                <text
-                  x="50%"
-                  y="50%"
-                  fontSize={viFontSize}
-                  textAnchor="middle"
-                  fill="white"
-                  dominantBaseline="middle"
-                  fontFamily="Arial Black"
-                >
-                  VI
-                </text>
-              </g>
-            </mask>
-          </defs>
-          <image
-            href="./bg.png"
-            width="100%"
-            height="100%"
-            preserveAspectRatio="xMidYMid slice"
-            mask="url(#viMask)"
-          />
-        </svg>
-      </div>
+      {!showContent && (
+        <div className="svg flex items-center justify-center fixed top-0 left-0 z-[100] w-full h-screen overflow-hidden bg-[#000]">
+          <svg viewBox={`0 0 ${vw} ${vh}`} preserveAspectRatio="xMidYMid slice">
+            <defs>
+              <mask id="viMask">
+                <rect width="100%" height="100%" fill="black" />
+                <g className="vi-mask-group">
+                  <text
+                    x="50%"
+                    y="50%"
+                    fontSize={viFontSize}
+                    textAnchor="middle"
+                    fill="white"
+                    dominantBaseline="middle"
+                    fontFamily="Arial Black"
+                  >
+                    VI
+                  </text>
+                </g>
+              </mask>
+            </defs>
+            <image
+              href="./bg.png"
+              width="100%"
+              height="100%"
+              preserveAspectRatio="xMidYMid slice"
+              mask="url(#viMask)"
+            />
+          </svg>
+        </div>
+      )}
       {showContent && (
         <div className="main w-full rotate-[-10deg] scale-[1.7]">
           <div className="landing overflow-hidden relative w-full h-screen bg-black">
